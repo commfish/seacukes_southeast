@@ -3,9 +3,14 @@
 
 # K.Palof    ADF&G 
 # katie.palof@alaska.gov
-#2018-2-13
+#2018-02-13
 
 # load ---
-source(./code/packages.R'')
+source('./code/packages.R')
+#library(readxl)
  
+# data ---
+data <- read.csv('data/count_113_60s.csv')
 
+
+# clean and reshape data ---
