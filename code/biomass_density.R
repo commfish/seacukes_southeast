@@ -11,7 +11,7 @@ source('./code/packages.R')
  
 # data ---
 data <- read.csv('data/count_113_60s.csv', header = T, check.names = F) # added check.names = F to bring in year as column name without an X in front
-
+weights <- read.csv('data/wt_113_60s.csv', header = T, check.names = F)
 
 # clean and reshape data ---
 gather(data, "year", "n", 2:23) -> data2
@@ -27,6 +27,7 @@ data2 %>%
   group_by(year) %>% 
   summarise(n_trans = n(), mean_d = mean(n, na.rm = TRUE), 
             var_d = var(n, na.rm = TRUE)/n_trans) %>% 
-  mutate(se_d = sqrt(var_d/n_trans), ps = 1- (1.31*(se_d)/mean_d) ) -> density_sum
+  mutate(se_d = sqrt(var_d/n_trans), sd_d = sqrt(var_d), 
+         ps_se = (1- (1.31*(se_d)/mean_d))*100, ps_sd = (1- (1.31*(sd_d)/mean_d))*100 ) -> density_sum
 
 
