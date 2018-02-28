@@ -22,3 +22,11 @@ head(data2)
 data2 %>% 
   group_by(year) %>% 
   summarise(mean_n = mean(n, na.rm = TRUE), var_n = var(n, na.rm = TRUE)) ->data2_sum
+# formulas according to 2012 document - ADFG_FDS_12_26 =_Hebert
+data2 %>% 
+  group_by(year) %>% 
+  summarise(n_trans = n(), mean_d = mean(n, na.rm = TRUE), 
+            var_d = var(n, na.rm = TRUE)/n_trans) %>% 
+  mutate(se_d = sqrt(var_d/n_trans), ps = 1- (1.31*(se_d)/mean_d) ) -> density_sum
+
+
