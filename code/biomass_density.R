@@ -74,7 +74,7 @@ all_summary %>%
 # confidence intervals -----
 all_summary %>% 
   mutate(se_lb_m = sqrt(var_lb_m/n_trans), sd_lb_m = sqrt(var_lb_m), cv = se_lb_m/lb_m) %>% 
-  select(lb_m, var_lb_m, se_lb_m, sd_lb_m, cv) -> biomass_calc
+  select(year, lb_m, var_lb_m, se_lb_m, sd_lb_m, cv) -> biomass_calc
 
 biomass_calc %>%  # multiple ways to get one sided 90% confidence intervals
   mutate(l90_se = lb_m - (1.28*se_lb_m), 
