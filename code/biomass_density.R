@@ -66,7 +66,24 @@ weight_sum %>%
 
 temp1 %>% 
   left_join(temp2) -> all_summary
-# log normal variance -----
+
+all_summary %>% 
+  mutate(lb_m = mean_d*mean_wt) %>% 
+  mutate(var_lb_m = ((mean_wt^2)*var_d)+((mean_d^2)*var_wt)-(var_d*var_wt)) -> all_summary
+
+# confidence intervals -----
+all_summary %>% 
+  mutate(se_lb_m = sqrt(var_lb_m/n_trans), sd_lb_m = sqrt(var_lb_m), cv = se_lb_m/lb_m) %>% 
+  select(lb_m, var_lb_m, se_lb_m, sd_lb_m, cv) -> biomass_calc
+
+biomass_calc %>%  # multiple ways to get one sided 90% confidence intervals
+  mutate(l90_se = lb_m - (1.28*se_lb_m), 
+         l90_sd = lb_m - (1.28*sd_lb_m), 
+         l90_log = lb_m * exp(-1.28*sqrt(log(1+cv^2))), 
+         P_se = 100*(1-((lb_m - l90_se)/lb_m)), 
+         P_sd = 100*(1-((lb_m - l90_sd)/lb_m)),
+         P_log = 100*(1-((lb_m - l90_log)/lb_m)))  # one-sided 90% large sample size about 1.28
+
 
 # 
 
