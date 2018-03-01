@@ -45,7 +45,7 @@ data2 %>%
             var_d = var(n, na.rm = TRUE)/n_trans) %>% 
   mutate(se_d = sqrt(var_d/n_trans), sd_d = sqrt(var_d), 
          ps_se = (1- (1.31*(se_d)/mean_d))*100, ps_sd = (1- (1.31*(sd_d)/mean_d))*100 ) -> density_sum
-
+density_sum
 # mean weight -----
 # weight is in grams and converted to pounds 
 wt_data_avg %>%     # data just with avg weights removed sample sizes for these weights
@@ -82,8 +82,8 @@ biomass_calc %>%  # multiple ways to get one sided 90% confidence intervals
          l90_log = lb_m * exp(-1.28*sqrt(log(1+cv^2))), 
          P_se = 100*(1-((lb_m - l90_se)/lb_m)), 
          P_sd = 100*(1-((lb_m - l90_sd)/lb_m)),
-         P_log = 100*(1-((lb_m - l90_log)/lb_m)))  # one-sided 90% large sample size about 1.28
-
+         P_log = 100*(1-((lb_m - l90_log)/lb_m))) -> c_inter_all# one-sided 90% large sample size about 1.28
+write.csv(c_inter_all, './results/confidence_intervals_current_113_60.csv')
 
 # 
 
