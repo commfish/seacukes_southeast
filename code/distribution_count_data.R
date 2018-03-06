@@ -60,8 +60,9 @@ data2 %>% filter(year == 2009) -> data2_09
 eda.norm(data2_09$n) # W = 0.49681, p-value = 4.959e-09
 
 data2 %>% filter(year == 2012) -> data2_12
-eda.norm(data2_12$n) # W = 0.49681, p-value = 4.959e-09
+eda.norm(data2_12$n) # W = 0.53012, p-value = 1.132e-08
 
-  
+data2 %>% filter(year == 2015) -> data2_15
+eda.norm(data2_15$n) # W = 0.6236, p-value = 2.933e-08
 
 
