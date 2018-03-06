@@ -39,9 +39,29 @@ eda.norm <- function(x, ...)
 }
 
 data2 %>% filter(year == 1994) -> data2_94
-eda.norm(data2_94$n)
+eda.norm(data2_94$n) # W = 0.51792, p-value = 4.637e-07
 
-data2 %>% 
+data2 %>% filter(year == 1997) -> data2_97
+eda.norm(data2_97$n) # W = 0.32057, p-value = 1.706e-07
+
+data2 %>% filter(year == 2000) -> data2_00
+eda.norm(data2_00$n) # W = 0.51506, p-value = 4.362e-07
+
+data2 %>% filter(year == 2003) -> data2_03
+eda.norm(data2_03$n) # W = 0.47634, p-value = 3.118e-07
+
+data2 %>% filter(year == 2006) -> data2_06
+eda.norm(data2_06$n) # W = 0.66672, p-value = 3.359e-05
+
+data2 %>% filter(year == 2008) -> data2_08
+eda.norm(data2_08$n) # W = 0.34975, p-value = 1.799e-08
+
+data2 %>% filter(year == 2009) -> data2_09
+eda.norm(data2_09$n) # W = 0.49681, p-value = 4.959e-09
+
+data2 %>% filter(year == 2012) -> data2_12
+eda.norm(data2_12$n) # W = 0.49681, p-value = 4.959e-09
+
   
 
 
