@@ -91,6 +91,11 @@ write.csv(c_inter_all, './results/confidence_intervals_current_113_60.csv')
 
 
 
+# published equations ----------
+# taken from Hebert 2012 - Fishery Data Series No. 12-26
+
+head(data2) # count data by year for 113-60s
+head(wt_data_avg)
 
 
 
