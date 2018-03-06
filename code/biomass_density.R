@@ -10,7 +10,7 @@ source('./code/packages.R')
 
 #library(readxl)
  
-# data ---
+# data -----
 data <- read.csv('data/count_113_60s.csv', header = T, check.names = F) # added check.names = F to bring in year as column name without an X in front
 
 # weight data ---
@@ -89,7 +89,7 @@ biomass_calc %>%  # multiple ways to get one sided 90% confidence intervals
          P_log_sd = (1-((lb_m - l90_log_sd)/lb_m))) -> c_inter_all# one-sided 90% large sample size about 1.28
 write.csv(c_inter_all, './results/confidence_intervals_current_113_60.csv')
 
-# distributino of count data by year -----
+
 
 
 
