@@ -12,6 +12,12 @@ This exercise was invoked to determine wheather the standard error (SE) or stand
 ## Using SD vs. SE
 The data from stat areas 113-62,63,64,65, and 66 were used to determine (using Excel) how the variance was being incorporated into the confidence interval calculation.  Currently the SD is being used in these calculations. While is is common for the SE to be used in confidence intervals it can be appropriate for the SD to be used instead. In this case the estimate is representing the entire "population" not just the sample taken from the population so the SD is a more appropriate and more conservative estimate of the error associated with the mean.  
 
+## Precision
+Documentation for sea cucumber and geoduck analyses are currently using a measure of percent precision, defined below, to determine the overall variability of the biomass estimates over time. 
+
+$$Precision = 1- \frac{u - LCI}{u}$$
+Where u is the mean, LCI is the lower confidence interval using the SD of the mean (not the SE).
+
 ## Error structure?
 
 
