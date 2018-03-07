@@ -97,5 +97,7 @@ write.csv(c_inter_all, './results/confidence_intervals_current_113_60.csv')
 head(data2) # count data by year for 113-60s
 head(wt_data_avg)
 
+# log normal error -------
+
 
 
