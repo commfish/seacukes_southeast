@@ -5,6 +5,18 @@ date: "March 5, 2018"
 output: html_document
 ---
 
+## Background
+Sea cucumber stocks in Southeast Alaska are managed using a harvest strategy that relies on biomass estimates from dive transect surveys of count data.  The surveys and equations used in estimation of denisty, biomass and their associated variances are described in Hebert 2012. However, this publication does not describe how the lower 90% confidence intervals are being calculated, nor does it provide an equation for the "percent precision" that is currently used to examine variability in sea cucumber biomass estimation.  
+This exercise was invoked to determine wheather the standard error (SE) or standard deviation (SD) was being used to establish the lower 90% for sea cucumber biomass estimates.  This is important since the one-sided lower 90% confidence inteval is used in the harvest strategy as the biomass estimate.  
+
+## Using SD vs. SE
+The data from stat areas 113-62,63,64,65, and 66 were used to determine (using Excel) how the variance was being incorporated into the confidence interval calculation.  Currently the SD is being used in these calculations. While is is common for the SE to be used in confidence intervals it can be appropriate for the SD to be used instead. In this case the estimate is representing the entire "population" not just the sample taken from the population so the SD is a more appropriate and more conservative estimate of the error associated with the mean.  
+
+## Error structure?
+
+
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
