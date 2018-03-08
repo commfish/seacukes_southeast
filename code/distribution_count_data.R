@@ -27,6 +27,9 @@ plotNormalHistogram(data2$n)
 qqnorm(data2$n)
 qqline(data2$n, col = "red")
 
+
+# data transformations -----------
+
 # log transformation
 data2 %>% mutate(n_001 = n + 0.0000001, n_log = log(n_001)) -> data2
 
@@ -36,6 +39,16 @@ qqline(data2$n_log, col = "red")
 
 # square root transformation 
 data2 %>% mutate(n_sqrt = sqrt(n)) -> data2
+plotNormalHistogram(data2$n_sqrt)
+qqnorm(data2$n_sqrt)
+qqline(data2$n_sqrt, col = "red")
+
+# cube root transformation
+data2 %>% mutate(n_cube = sign(n) * abs(n^(1/3))) -> data2
+plotNormalHistogram(data2$n_cube)
+qqnorm(data2$n_cube)
+qqline(data2$n_cube, col = "red")
+
 
 # normality? ----
 #Determine if the data is normally distributed (p should be >0.05)
