@@ -114,6 +114,7 @@ qqline(log_d, col = "red")
 eda.norm(density_sum$mean_d)
 eda.norm(log_d) # log transformation does not imrove normality fit for density data.
 
+dev.off()
 # normality function -------------
 #Determine if the data is normally distributed (p should be >0.05)
 # if p <0.05 data is not normally distributed
