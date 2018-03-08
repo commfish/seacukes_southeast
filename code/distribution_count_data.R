@@ -7,14 +7,35 @@
 
 # load ---
 source('./code/packages.R')
+library(rcompanion)
 
-# data ---
+# data -----
 data <- read.csv('data/count_113_60s.csv', header = T, check.names = F) # added check.names = F to bring in year as column name without an X in front
 
-# clean and reshape data ---
+# clean and reshape data -----
 gather(data, "year", "n", 2:23) -> data2
 data2 %>% na.omit -> data2 # remove rows with no data for simplification in analyses
 head(data2)
+
+# graphical representation ------
+ggplot(data2, aes(n)) + geom_histogram(binwidth = 5) + facet_wrap (~ year)
+
+# all years combined
+dev.off()
+# Normal 
+plotNormalHistogram(data2$n)
+qqnorm(data2$n)
+qqline(data2$n, col = "red")
+
+# log transformation
+data2 %>% mutate(n_001 = n + 0.0000001, n_log = log(n_001)) -> data2
+
+plotNormalHistogram(data2$n_log)
+qqnorm(data2$n_log)
+qqline(data2$n_log, col = "red")
+
+# square root transformation 
+data2 %>% mutate(n_sqrt = sqrt(n)) -> data2
 
 # normality? ----
 #Determine if the data is normally distributed (p should be >0.05)
