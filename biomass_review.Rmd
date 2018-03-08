@@ -6,21 +6,14 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
+source('./code/packages.R')
 library(knitr)
-library(tidyverse)
-library(extrafont)
-library(grid)
-options(scipen=9999) # remove scientific notation
-
-windowsFonts(Times=windowsFont("TT Times New Roman"))
-theme_set(theme_bw(base_size=12,base_family='Times New Roman')
-          +theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()))
 knitr::opts_chunk$set(echo = FALSE, message = F, warning = F)
 ```
 
 ## Background
-Sea cucumber stocks in Southeast Alaska are managed using a harvest strategy that relies on biomass estimates from dive transect surveys of count data.  The surveys and equations used in estimation of denisty, biomass and their associated variances are described in Hebert 2012. However, this publication does not describe how the lower 90% confidence intervals are being calculated, nor does it provide an equation for the "percent precision" that is currently used to examine variability in sea cucumber biomass estimation.  
-This exercise was invoked to determine wheather the standard error (SE) or standard deviation (SD) was being used to establish the lower 90% for sea cucumber biomass estimates.  This is important since the one-sided lower 90% confidence inteval is used in the harvest strategy as the biomass estimate.  
+Sea cucumber stocks in Southeast Alaska are managed using a harvest strategy that relies on biomass estimates from dive transect surveys of count data.  The surveys and equations used in estimation of density, biomass and their associated variances are described in Hebert 2012. However, this publication does not describe how the lower 90% confidence intervals are being calculated, nor does it provide an equation for the "percent precision" that is currently used to examine variability in sea cucumber biomass estimation.  
+This exercise was invoked to determine whether the standard error (SE) or standard deviation (SD) was being used to establish the lower 90% for sea cucumber biomass estimates.  This is important since the one-sided lower 90% confidence interval is used in the harvest strategy as the biomass estimate.  
 
 ## Using SD vs. SE
 The data from stat areas 113-62,63,64,65, and 66 were used to determine (using Excel) how the variance was being incorporated into the confidence interval calculation.  Currently the SD is being used in these calculations. While is is common for the SE to be used in confidence intervals it can be appropriate for the SD to be used instead. In this case the estimate is representing the entire "population" not just the sample taken from the population so the SD is a more appropriate and more conservative estimate of the error associated with the mean.  
@@ -32,9 +25,12 @@ $$Precision = 1- \frac{u - LCI}{u}$$
 Where u is the mean, LCI is the lower confidence interval using the SD of the mean (not the SE).
 
 ## Error structure?
-After some review of the raw data and calculations, the current error strucutre, using a normal distribution, is adequate for describing the error around density estimates.  However, a normal distribution does not 
+After some review of the raw data and calculations the current error structure, using a normal distribution, is adequate for describing the error around density estimates. Although the count data that is used to calculate the density is not normally distributed, the resulting density estimates appear to be. 
 
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r normality, include=FALSE}
+
+
+
+
 ```
