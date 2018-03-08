@@ -29,22 +29,21 @@ qqline(data2$n, col = "red")
 
 
 # data transformations -----------
+data2 %>% mutate(n_001 = n + 0.0000001, n_log = log(n_001), n_sqrt = sqrt(n),
+                 n_cube = sign(n) * abs(n^(1/3))) -> data2
+
 
 # log transformation
-data2 %>% mutate(n_001 = n + 0.0000001, n_log = log(n_001)) -> data2
-
 plotNormalHistogram(data2$n_log)
 qqnorm(data2$n_log)
 qqline(data2$n_log, col = "red")
 
 # square root transformation 
-data2 %>% mutate(n_sqrt = sqrt(n)) -> data2
 plotNormalHistogram(data2$n_sqrt)
 qqnorm(data2$n_sqrt)
 qqline(data2$n_sqrt, col = "red")
 
 # cube root transformation
-data2 %>% mutate(n_cube = sign(n) * abs(n^(1/3))) -> data2
 plotNormalHistogram(data2$n_cube)
 qqnorm(data2$n_cube)
 qqline(data2$n_cube, col = "red")
