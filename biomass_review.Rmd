@@ -29,8 +29,18 @@ After some review of the raw data and calculations the current error structure, 
 
 
 ```{r normality, include=FALSE}
-
-
+# data -----
+data <- read.csv('data/count_113_60s.csv', header = T, check.names = F) # added check.names = F to bring in year as column name without an X in front
+# clean and reshape data ---
+gather(data, "year", "n", 2:23) -> data2
+data2 %>% na.omit -> data2 # remove rows with no data for simplification in analyses
+data2 %>% 
+  group_by(year) %>% 
+  summarise(n_trans = n(), mean_d = mean(n, na.rm = TRUE), 
+            var_d = var(n, na.rm = TRUE)/n_trans) %>% 
+  mutate(se_d = sqrt(var_d/n_trans), sd_d = sqrt(var_d), 
+         ps_se = (1- (1.31*(se_d)/mean_d))*100, ps_sd = (1- (1.31*(sd_d)/mean_d))*100 ) -> density_sum
+eda.norm(density_sum$mean_d)
 
 
 ```
