@@ -101,6 +101,7 @@ head(wt_data_avg)
 
 # density distribution ------
 density_sum
+ggplot(density_sum, aes(mean_d)) + geom_histogram(binwidth = 0.05)
 plotNormalHistogram(density_sum$mean_d)
 qqnorm(density_sum$mean_d)
 qqline(density_sum$mean_d, col = "red")
