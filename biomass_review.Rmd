@@ -5,6 +5,19 @@ date: "March 5, 2018"
 output: html_document
 ---
 
+```{r setup, include=FALSE}
+library(knitr)
+library(tidyverse)
+library(extrafont)
+library(grid)
+options(scipen=9999) # remove scientific notation
+
+windowsFonts(Times=windowsFont("TT Times New Roman"))
+theme_set(theme_bw(base_size=12,base_family='Times New Roman')
+          +theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()))
+knitr::opts_chunk$set(echo = FALSE, message = F, warning = F)
+```
+
 ## Background
 Sea cucumber stocks in Southeast Alaska are managed using a harvest strategy that relies on biomass estimates from dive transect surveys of count data.  The surveys and equations used in estimation of denisty, biomass and their associated variances are described in Hebert 2012. However, this publication does not describe how the lower 90% confidence intervals are being calculated, nor does it provide an equation for the "percent precision" that is currently used to examine variability in sea cucumber biomass estimation.  
 This exercise was invoked to determine wheather the standard error (SE) or standard deviation (SD) was being used to establish the lower 90% for sea cucumber biomass estimates.  This is important since the one-sided lower 90% confidence inteval is used in the harvest strategy as the biomass estimate.  
@@ -19,8 +32,7 @@ $$Precision = 1- \frac{u - LCI}{u}$$
 Where u is the mean, LCI is the lower confidence interval using the SD of the mean (not the SE).
 
 ## Error structure?
-
-
+After some review of the raw data and calculations, the current error strucutre, using a normal distribution, is adequate for describing the error around density estimates.  However, a normal distribution does not 
 
 
 ```{r setup, include=FALSE}
