@@ -35,7 +35,7 @@ wt_data2 %>%
   filter(type == "avg") %>% 
   na.omit-> wt_data_avg
 
-# mean count ----
+# mean density ----
 data2 %>% 
   group_by(year) %>% 
   summarise(mean_n = mean(n, na.rm = TRUE), var_n = var(n, na.rm = TRUE)) ->data2_sum
@@ -99,5 +99,15 @@ head(wt_data_avg)
 
 # log normal error -------
 
+# density distribution ------
+density_sum
+plotNormalHistogram(density_sum$mean_d)
+qqnorm(density_sum$mean_d)
+qqline(density_sum$mean_d, col = "red")
+
+log_d = log(density_sum$mean_d)
+plotNormalHistogram(log_d)
+qqnorm(log_d)
+qqline(log_d, col = "red")
 
 
