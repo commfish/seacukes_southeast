@@ -111,4 +111,28 @@ plotNormalHistogram(log_d)
 qqnorm(log_d)
 qqline(log_d, col = "red")
 
+eda.norm(density_sum$mean_d)
+eda.norm(log_d) # log transformation does not imrove normality fit for density data.
+
+# normality function -------------
+#Determine if the data is normally distributed (p should be >0.05)
+# if p <0.05 data is not normally distributed
+eda.norm <- function(x, ...)
+{
+  par(mfrow=c(2,2))
+  if(sum(is.na(x)) > 0)
+    warning("NA's were removed before plotting")
+  x <- x[!is.na(x)]
+  hist(x, main = "Histogram and non-\nparametric density estimate", prob = T)
+  iqd <- summary(x)[5] - summary(x)[2]
+  lines(density(x, width = 2 * iqd))
+  boxplot(x, main = "Boxplot", ...)
+  qqnorm(x)
+  qqline(x)
+  plot.ecdf(x, main="Empirical and normal cdf")
+  LIM <- par("usr")
+  y <- seq(LIM[1],LIM[2],length=100)
+  lines(y, pnorm(y, mean(x), sqrt(var(x))))
+  shapiro.test(x)
+}
 
