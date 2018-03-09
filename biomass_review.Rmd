@@ -35,9 +35,11 @@ Standard deviation of mean density, $\sigma_d$
 
 Precision using a one-sided lower confidence interval, $$Precision = 1- \frac{u - LCI}{u}$$
 where LCI is defined as, $LCI =  u - t_\alpha\sigma_d$
-Population size (Nc)
 
-Average weight
+The total number of sea cucumbers ($N_c$) is the product of the density of sea cucumbers per meter of shore line and the total estimated length of shoreline ($L$), $N_c = Ld$
+
+Average weight for the entire area
+$$W_A = \frac{\sum_{i=1}^k W_i}{k} $$
 Variance of average weight
 Precision (using SD)
 
