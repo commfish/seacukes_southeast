@@ -28,6 +28,23 @@ n = the number of transects
 
 $$ \sigma_d = \frac{\sum_{i=1}^n (d - C_i)^2}{(n-1)n}$$
 
+Standard error
+Standard deviation
+Precision
+Population size (Nc)
+
+Average weight
+Variance of average weight
+Precision (using SD)
+
+Biomass per meter (lb/m)
+Variance of lb/m
+Precision of lb/m - using SD
+
+Total biomass
+LCI biomass
+Precision of biomass same as Precision of lb/m 
+
 
 ## Using SD vs. SE
 The data from stat areas 113-62,63,64,65, and 66 were used to determine (using Excel) how the variance was being incorporated into the confidence interval calculation.  Currently the SD is being used in these calculations. While is is common for the SE to be used in confidence intervals it can be appropriate for the SD to be used instead. In this case the estimate is representing the entire "population" not just the sample taken from the population so the SD is a more appropriate and more conservative estimate of the error associated with the mean.  
