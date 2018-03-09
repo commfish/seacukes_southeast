@@ -15,6 +15,11 @@ knitr::opts_chunk$set(echo = FALSE, message = F, warning = F)
 Sea cucumber stocks in Southeast Alaska are managed using a harvest strategy that relies on biomass estimates from dive transect surveys of count data.  The surveys and equations used in estimation of density, biomass and their associated variances are described in Hebert 2012. However, this publication does not describe how the lower 90% confidence intervals are being calculated, nor does it provide an equation for the "percent precision" that is currently used to examine variability in sea cucumber biomass estimation.  
 This exercise was invoked to determine whether the standard error (SE) or standard deviation (SD) was being used to establish the lower 90% for sea cucumber biomass estimates.  This is important since the one-sided lower 90% confidence interval is used in the harvest strategy as the biomass estimate.  
 
+## Data Analysis
+The raw data are collected as count data per transect and a sample of average weights for some transects in each area. The analysis and equations below follow what is currently being calculated in Excel, and while they are NOT the same equations that are published in the 2012 document they do produce the same estimates (just some algebraic adjustments).
+
+
+
 ## Using SD vs. SE
 The data from stat areas 113-62,63,64,65, and 66 were used to determine (using Excel) how the variance was being incorporated into the confidence interval calculation.  Currently the SD is being used in these calculations. While is is common for the SE to be used in confidence intervals it can be appropriate for the SD to be used instead. In this case the estimate is representing the entire "population" not just the sample taken from the population so the SD is a more appropriate and more conservative estimate of the error associated with the mean.  
 
@@ -25,10 +30,10 @@ $$Precision = 1- \frac{u - LCI}{u}$$
 Where u is the mean, LCI is the lower confidence interval using the SD of the mean (not the SE).
 
 ## Error structure?
-After some review of the raw data and calculations the current error structure, using a normal distribution, is adequate for describing the error around density estimates. Although the count data that is used to calculate the density is not normally distributed, the resulting density estimates appear to be. 
+After some review of the raw data and calculations the current error structure, using a normal distribution, is adequate for describing the error around density estimates. Although the count data that is used to calculate the density is not normally distributed, the resulting density estimates appear to be. The following graphically depicts the normal distribution of density estimates (for areas 113-62 to 66), and the resulting 
 
 
-```{r normality, include=FALSE}
+```{r normality, warning =  FALSE}
 # data -----
 data <- read.csv('data/count_113_60s.csv', header = T, check.names = F) # added check.names = F to bring in year as column name without an X in front
 # clean and reshape data ---
