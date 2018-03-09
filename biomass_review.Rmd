@@ -18,6 +18,15 @@ This exercise was invoked to determine whether the standard error (SE) or standa
 ## Data Analysis
 The raw data are collected as count data per transect and a sample of average weights for some transects in each area. The analysis and equations below follow what is currently being calculated in Excel, and while they are NOT the same equations that are published in the 2012 document they do produce the same estimates (just some algebraic adjustments).
 
+The density of each area is estimated using d, and the variance about this mean is estimated with the equation below.
+
+$$d = \sum_{i=1}^n \frac{C_i}{n}$$
+where: 
+i = transect index, 
+$$C_i$$ = the average count of sea cucumber per transect (averaged over two divers), 
+n = the number of transects
+
+$$ \sigma_d = \frac{\sum_{i=1}^n (d - C_i)^2}{(n-1)n}$$
 
 
 ## Using SD vs. SE
