@@ -23,16 +23,18 @@ The density of each area is estimated using d, and the variance about this mean 
 $$d = \sum_{i=1}^n \frac{C_i}{n}$$
 where: 
 i = transect index, 
-$$C_i$$ = the average count of sea cucumber per transect (averaged over two divers), 
+
+$C_i$ = the average count of sea cucumber per transect (averaged over two divers), 
+
 n = the number of transects
 
 $$ \sigma^2_d = \frac{\sum_{i=1}^n (d - C_i)^2}{(n-1)n}$$
 
-Standard error of mean density, $$SE = \frac{\sigma_d}{\sqrt{n}}$$
+Standard error of mean density, $SE = \frac{\sigma_d}{\sqrt{n}}$
+Standard deviation of mean density, $\sigma_d$
 
-Standard deviation of mean density, $$ \sigma_d$$
 Precision using a one-sided lower confidence interval, $$Precision = 1- \frac{u - LCI}{u}$$
-where LCI is defined as, $$LCI =  u - t_\alpha\sigma_d $$
+where LCI is defined as, $LCI =  u - t_\alpha\sigma_d$
 Population size (Nc)
 
 Average weight
