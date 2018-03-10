@@ -41,9 +41,16 @@ The total number of sea cucumbers ($N_c$) is the product of the density of sea c
 Average weight for the entire area
 $$W_A = \frac{\sum_{i=1}^k W_i}{k} $$
 Variance of average weight
-Precision (using SD)
+$$\sigma^2_W_A = \frac{\sum_{i=1}^k (W_i - W_A)^2}{(k-1)k} $$
+where:
+$W_i$ = average weight for a transect
 
-Biomass per meter (lb/m)
+k = number of transects from which a cucumber weight sample was taken
+
+The precision for weight can be calculated using the equation above and the mean and variance from the weight equations. 
+
+Biomass per meter (lb/m), 
+
 Variance of lb/m
 Precision of lb/m - using SD
 
