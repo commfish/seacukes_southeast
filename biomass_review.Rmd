@@ -1,8 +1,11 @@
 ---
 title: "SE sea cucumber biomass estimation review"
 author: "Katie Palof"
-date: "March 5, 2018"
-output: html_document
+date: "March 5, 2018 / August 15, 2018"
+output:
+  word_document: default
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -18,6 +21,7 @@ This exercise was invoked to determine whether the standard error (SE) or standa
 ## Data Analysis
 The raw data are collected as count data per transect and a sample of average weights for some transects in each area. The analysis and equations below follow what is currently being calculated in Excel, and while they are NOT the same equations that are published in the 2012 document they do produce the same estimates (just some algebraic adjustments).
 
+### Density calculations (number per meter?)
 The density of each area is estimated using d, and the variance about this mean is estimated with the equation below.
 
 $$d = \sum_{i=1}^n \frac{C_i}{n}$$
@@ -31,6 +35,7 @@ n = the number of transects
 $$ \sigma^2_d = \frac{\sum_{i=1}^n (d - C_i)^2}{(n-1)n}$$
 
 Standard error of mean density, $SE = \frac{\sigma_d}{\sqrt{n}}$
+
 Standard deviation of mean density, $\sigma_d$
 
 Precision using a one-sided lower confidence interval, $$Precision = 1- \frac{u - LCI}{u}$$
@@ -38,18 +43,25 @@ where LCI is defined as, $LCI =  u - t_\alpha\sigma_d$
 
 The total number of sea cucumbers ($N_c$) is the product of the density of sea cucumbers per meter of shore line and the total estimated length of shoreline ($L$), $N_c = Ld$
 
+### Weight calculations 
+
 Average weight for the entire area
 $$W_A = \frac{\sum_{i=1}^k W_i}{k} $$
 Variance of average weight
 $$ \sigma^2_{W_A}= \frac{\sum_{i=1}^k (W_i - W_A)^2}{(k-1)k} $$
 where:
+\newline
+
 $W_i$ = average weight for a transect
+\newline
 
 k = number of transects from which a cucumber weight sample was taken
 
 The precision for weight can be calculated using the equation above and the mean and variance from the weight equations. 
 
-Biomass per meter (lb/m) or $d_B$, $d_B = dW_A$
+
+### Biomass and quota calculations
+Biomass per meter (lb/m) or $d_B$, $$d_B = dW_A$$
 
 Variance of $d_B$, $$ \sigma^2_{d_B} =  (\sigma^2_d W_A^2) + (d^2 \sigma^2_{W_A}) - (\sigma^2_d \sigma^2_{W_A})$$
 
@@ -58,13 +70,14 @@ where LCI is defined as, $LCI_{lb/m} =  u_{lb/m} - t_\alpha\sigma_{d_B}$
 
 using $t_\alpha$ of ____.
 
-Total area biomass,  $$Biomass_{total} = d_B*ShorelineL$$
+Total area biomass,  $$Biomass_{total} = d_B*L$$
+where L = length of shoreline (meters).
 
 Quota calculation, assuming annual harvest rate of 0.064 and a 3 year cycle
 $$Quota = 0.192*Biomass_{total}*Precision_{lb/m}$$
 
 
-Precision of biomass same as Precision of lb/m 
+Precision of biomass is the same as Precision of lb/m.
 
 
 ## Using SD vs. SE
@@ -77,7 +90,7 @@ $$Precision = 1- \frac{u - LCI}{u}$$
 Where u is the mean, LCI is the lower confidence interval using the SD of the mean (not the SE).
 
 ## Error structure?
-After some review of the raw data and calculations the current error structure, using a normal distribution, is adequate for describing the error around density estimates. Although the count data that is used to calculate the density is not normally distributed, the resulting density estimates appear to be. The following graphically depicts the normal distribution of density estimates (for areas 113-62 to 66), and the resulting 
+After some review of the raw data and calculations the current error structure, using a normal distribution, is adequate for describing the error around density estimates. Although the count data that is used to calculate the density is not normally distributed, the resulting density estimates appear to be. The following graphically depicts the normal distribution of density estimates (for areas 113-62 to 66).
 
 
 ```{r normality, warning =  FALSE}
