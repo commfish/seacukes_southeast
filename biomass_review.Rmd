@@ -52,10 +52,18 @@ The precision for weight can be calculated using the equation above and the mean
 Biomass per meter (lb/m) or $d_B$, $d_B = dW_A$
 
 Variance of $d_B$, $$ \sigma^2_{d_B} =  (\sigma^2_d W_A^2) + (d^2 \sigma^2_{W_A}) - (\sigma^2_d \sigma^2_{W_A})$$
-Precision of lb/m - using SD
 
-Total biomass
-LCI biomass
+Precision of lb/m using a one-sided lower confidence interval, $$Precision_{lb/m} = 1- \frac{u - LCI}{u}$$
+where LCI is defined as, $LCI_{lb/m} =  u_{lb/m} - t_\alpha\sigma_{d_B}$
+
+using $t_\alpha$ of ____.
+
+Total area biomass $Biomass_{total} = d_B*ShorelineL$
+
+Quota calculation, assuming annual harvest rate of 0.064 and a 3 year cycle
+$Quota = 0.192*Biomass_{total}*Precision_{lb/m}$
+
+
 Precision of biomass same as Precision of lb/m 
 
 
