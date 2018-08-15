@@ -51,7 +51,7 @@ The precision for weight can be calculated using the equation above and the mean
 
 Biomass per meter (lb/m) or $d_B$, $d_B = dW_A$
 
-Variance of $d_B$, $$ \sigma^2_{d_B} =  (\sigma^2_d$$
+Variance of $d_B$, $$ \sigma^2_{d_B} =  (\sigma^2_d W_A^2) + (d^2 \sigma^2_{W_A}) - (\sigma^2_d \sigma^2_{W_A})$$
 Precision of lb/m - using SD
 
 Total biomass
