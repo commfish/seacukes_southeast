@@ -98,7 +98,7 @@ write.csv(c_inter_all, './results/confidence_intervals_current_113_60.csv')
 # taken from Hebert 2012 - Fishery Data Series No. 12-26
 
 ## total biomass ------
-
+# need to get shoreline length for these calculations, and harvest rates...
 
 
 head(data2) # count data by year for 113-60s
