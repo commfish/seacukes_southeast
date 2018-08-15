@@ -45,7 +45,8 @@ data2 %>%
   summarise(n_trans = n(), mean_d = mean(n, na.rm = TRUE), 
             var_d = var(n, na.rm = TRUE)/n_trans) %>% 
   mutate(se_d = sqrt(var_d/n_trans), sd_d = sqrt(var_d), 
-         ps_se = (1- (1.31*(se_d)/mean_d))*100, ps_sd = (1- (1.31*(sd_d)/mean_d))*100 ) -> density_sum
+         ps_se = (1- (1.31*(se_d)/mean_d))*100, 
+         ps_sd = (1- (1.31*(sd_d)/mean_d))*100 ) -> density_sum
 density_sum
 # mean weight -----
 # weight is in grams and converted to pounds 
@@ -54,7 +55,8 @@ wt_data_avg %>%     # data just with avg weights removed sample sizes for these 
   summarise(n_trans_wt = n(), mean_wt = mean(value, na.rm = TRUE)/454, 
             var_wt = var(value, na.rm = TRUE)/n_trans_wt/454^2) %>% 
   mutate(se_wt = sqrt(var_wt/n_trans_wt), sd_wt = sqrt(var_wt), 
-         ps_se = (1- (1.38*(se_wt)/mean_wt))*100, ps_sd = (1- (1.38*(sd_wt)/mean_wt))*100 ) -> weight_sum
+         ps_se = (1- (1.38*(se_wt)/mean_wt))*100, 
+         ps_sd = (1- (1.38*(sd_wt)/mean_wt))*100 ) -> weight_sum
 
 
 # density and weight -----
@@ -71,10 +73,12 @@ temp1 %>%
 all_summary %>% 
   mutate(lb_m = mean_d*mean_wt) %>% 
   mutate(var_lb_m = ((mean_wt^2)*var_d)+((mean_d^2)*var_wt)-(var_d*var_wt)) -> all_summary
+# variance of biomass per meter
 
 # confidence intervals -----
 all_summary %>% 
-  mutate(se_lb_m = sqrt(var_lb_m/n_trans), sd_lb_m = sqrt(var_lb_m), cv = se_lb_m/lb_m, 
+  mutate(se_lb_m = sqrt(var_lb_m/n_trans), sd_lb_m = sqrt(var_lb_m), 
+         cv = se_lb_m/lb_m, 
          cv_sd = sd_lb_m / lb_m) %>% 
   select(year, lb_m, var_lb_m, se_lb_m, sd_lb_m, cv, cv_sd) -> biomass_calc
 
@@ -90,9 +94,12 @@ biomass_calc %>%  # multiple ways to get one sided 90% confidence intervals
 write.csv(c_inter_all, './results/confidence_intervals_current_113_60.csv')
 
 
-
 # published equations
 # taken from Hebert 2012 - Fishery Data Series No. 12-26
+
+## total biomass ------
+
+
 
 head(data2) # count data by year for 113-60s
 head(wt_data_avg)
